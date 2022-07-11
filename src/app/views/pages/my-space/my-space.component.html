@@ -1,0 +1,25 @@
+<app-nav-bar></app-nav-bar>
+
+<section class="wrapper">
+  <mat-tab-group>
+    <mat-tab label="My Articles">
+      <ng-container *ngFor="let post of myPosts">
+        <app-post [post]="post">
+        </app-post>
+      </ng-container>
+      <p *ngIf="myPosts.length == 0">
+        No articles are here...yet!
+      </p>
+    </mat-tab>
+    <mat-tab label="Favorited Articles">
+      <ng-container *ngFor="let favoritePost of favoritePosts">
+        <app-post [post]="favoritePost" [isDeleteEnabled]="true">
+        </app-post>
+      </ng-container>
+      <p *ngIf="favoritePosts.length == 0">
+        No articles are here...yet!
+      </p>
+    </mat-tab>
+  </mat-tab-group>
+</section>
+

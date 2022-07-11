@@ -11,6 +11,7 @@ export class MyPostsService extends RestClientApi {
   private myFavoritePosts: any[] = [];
   private myPosts: any[] = [];
   private apiUrl = `${environment.postsApi}`;
+  private isAlreadyAdded: boolean = false;
   constructor(http: HttpClient) {
     super(http);
   }
@@ -62,8 +63,12 @@ export class MyPostsService extends RestClientApi {
   }
 
   async getAllMyPosts(id: number): Promise<any> {
-    const all = await this.getMyPosts(id);
-    this.myPosts.push(...all);
+    if(!this.isAlreadyAdded) {
+      const all = await this.getMyPosts(id);
+      this.myPosts.push(...all);
+      this.isAlreadyAdded = true;
+    }
+
     return this.myPosts;
   }
 }
