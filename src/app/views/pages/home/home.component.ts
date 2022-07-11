@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PostModel} from '../../../model/post.model';
+import {GlobalPostsServices} from '../../../services/posts/global-posts.services';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  globalPosts: any = [];
+  constructor(private globalPostsServices: GlobalPostsServices) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.globalPosts = await this.globalPostsServices.listOfGlobalPosts();
   }
 
 }
