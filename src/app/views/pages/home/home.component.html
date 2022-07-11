@@ -1,0 +1,8 @@
+<app-nav-bar></app-nav-bar>
+
+<section class="wrapper">
+  <ng-container *ngFor="let globalPost of globalPosts">
+    <app-post [post]="globalPost">
+    </app-post>
+  </ng-container>
+</section>
