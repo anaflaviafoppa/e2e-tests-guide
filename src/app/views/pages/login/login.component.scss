@@ -1,0 +1,13 @@
+.login {
+  position: absolute;
+  left: calc(50% - 300px);
+  top: calc(50% - 300px);
+
+  &-content {
+    min-width: 600px;
+  }
+}
+
+form {
+  display: grid;
+}

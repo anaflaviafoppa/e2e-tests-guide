@@ -1,0 +1,22 @@
+<div class="login">
+  <mat-card class="login-content">
+    <mat-card-header>
+      <mat-card-title>Login:</mat-card-title>
+    </mat-card-header>
+    <form class="example-container"
+          (ngSubmit)="onSubmitForm()"
+          [formGroup]="form">
+      <mat-form-field  appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput [formControl]="emailControl">
+      </mat-form-field>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Enter your password</mat-label>
+        <input matInput type="password" [formControl]="passwordControl" min="10">
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit">Submit</button>
+    </form>
+  </mat-card>
+</div>
