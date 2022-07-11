@@ -1,0 +1,8 @@
+<mat-toolbar class="navbar">
+  <span>My Post Application</span>
+  <span class="spacer"></span>
+  <span [attr.data-testid]="'navbar-link-home'" (click)="navigate(routeEnum.HOME)">Home</span>
+  <span [attr.data-testid]="'navbar-link-my-page'" (click)="navigate(routeEnum.MY_SPACE)">My Page</span>
+  <span [attr.data-testid]="'navbar-link-new-post'" (click)="navigate(routeEnum.NEW_POST)">New Post</span>
+  <span [attr.data-testid]="'navbar-link-log-out'" (click)="navigate(routeEnum.LOGIN)">Log out</span>
+</mat-toolbar>

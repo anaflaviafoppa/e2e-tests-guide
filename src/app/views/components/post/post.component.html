@@ -1,0 +1,27 @@
+<div [attr.data-testid]="'post-'+post.id">
+  <mat-card class="card-post">
+  <mat-card-title-group class="card-post--title">
+    <mat-card-title>{{post?.title}}</mat-card-title>
+    <span class="spacer"></span>
+    <div>
+      <button
+        [attr.data-test]="'favorite-'+post.id"
+        (click)="favoritePost()" mat-icon-button
+              [color]="isFavorite() ? 'warn' : 'primary'" aria-label="Favorite">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button
+        [attr.data-test]="'delete-'+post.id"
+        (click)="deletePost()" mat-icon-button
+              [color]="'primary'" aria-label="Favorite">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </mat-card-title-group>
+  <mat-card-content>
+    <p>
+     {{post?.body}}
+    </p>
+  </mat-card-content>
+</mat-card>
+</div>

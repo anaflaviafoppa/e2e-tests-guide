@@ -1,0 +1,14 @@
+.new-post {
+  position: absolute;
+  left: calc(50% - 300px);
+  top: calc(50% - 300px);
+
+  &-content {
+    min-width: 60vw;
+  }
+}
+
+form {
+  display: grid;
+}
+

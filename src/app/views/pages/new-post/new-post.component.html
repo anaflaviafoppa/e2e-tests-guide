@@ -1,0 +1,24 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="new-post">
+  <mat-card class="new-post-content">
+    <mat-card-header>
+      <mat-card-title>Create a new Article:</mat-card-title>
+    </mat-card-header>
+    <form class="example-container"
+          (ngSubmit)="onSubmitForm()"
+          [formGroup]="form">
+      <mat-form-field  appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput [formControl]="titleControl">
+      </mat-form-field>
+
+      <mat-form-field  appearance="outline">
+        <mat-label>Enter the article body</mat-label>
+        <textarea matInput type="text" [formControl]="bodyControl"></textarea>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit">Create a new Post</button>
+    </form>
+  </mat-card>
+</div>
