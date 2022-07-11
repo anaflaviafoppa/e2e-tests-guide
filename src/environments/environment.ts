@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  postsApi: 'https://jsonplaceholder.typicode.com'
+  postsApi: 'https://jsonplaceholder.typicode.com',
+  userId: 4
 };
 
 /*

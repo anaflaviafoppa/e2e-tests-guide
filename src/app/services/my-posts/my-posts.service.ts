@@ -9,12 +9,13 @@ import {PostModel} from '../../model/post.model';
 })
 export class MyPostsService extends RestClientApi {
   private myFavoritePosts: any[] = [];
+  private myPosts: any[] = [];
   private apiUrl = `${environment.postsApi}`;
   constructor(http: HttpClient) {
     super(http);
   }
 
-  async getMyPosts(id: string):  Promise<any> {
+  async getMyPosts(id: number | string):  Promise<any> {
     return this.get(`${this.apiUrl}/posts?userId=${id}`);
   }
 
@@ -23,7 +24,9 @@ export class MyPostsService extends RestClientApi {
   }
 
   async createPost(post: PostModel): Promise<any> {
-    return this.post<any>(`${this.apiUrl}/posts`, post);
+    const newPost = await this.post<any>(`${this.apiUrl}/posts`, post);
+    const all = await this.getMyPosts(post.userId);
+    return all.push(newPost);
   }
 
   async deletePost(id: string): Promise<any> {
@@ -46,5 +49,21 @@ export class MyPostsService extends RestClientApi {
 
   isFavoritePost(id:string): boolean {
     return this.myFavoritePosts.findIndex((post: any) => post.id == id) >= 0;
+  }
+
+  setMyPosts(newPost: any): any {
+    this.myPosts.push(newPost);
+  }
+
+  deleteMyPost(id: string): any {
+    const index = this.myPosts.indexOf((post:any) => post.id == id);
+    this.myPosts.splice(index, 1);
+    return this.myPosts;
+  }
+
+  async getAllMyPosts(id: number): Promise<any> {
+    const all = await this.getMyPosts(id);
+    this.myPosts.push(...all);
+    return this.myPosts;
   }
 }
